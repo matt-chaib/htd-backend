@@ -20,6 +20,8 @@ const allowedOrigins = [
   'https://hashtagdeep.com',
 ];
 
+console.log(PORT)
+
 app.use(cors({
   origin: function (origin, callback) {
     if (allowedOrigins.includes(origin) || !origin) { // Allows no-origin requests (e.g., from Postman or CURL)
@@ -29,6 +31,7 @@ app.use(cors({
     }
   }
 }));
+
 app.use(express.json())
 app.use(express.static(path.join(__dirname, "../public")))
 
