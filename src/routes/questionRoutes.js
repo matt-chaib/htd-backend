@@ -5,6 +5,7 @@ import prisma from '../prismaClient.js';
 const router = express.Router();
 
 router.get('/', async (req, res) => { 
+    console.log(req, res)
     const questions = await prisma.question.findMany({
         include: {
             tags: true,
