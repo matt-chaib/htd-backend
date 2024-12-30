@@ -40,7 +40,7 @@ router.get('/:id', async (req, res) => {
 
     res.json(question);
   } catch (error) {
-    console.error('Error fetching question:');
+    console.error('Error fetching question:',error );
     res.status(500).json({ error: 'Failed to fetch question' });
   }
 });
