@@ -24,11 +24,11 @@ ENV REDDIT_ACC_PASS=$REDDIT_ACC_PASS
 
 RUN npx prisma generate
 
-# RUN npx prisma migrate reset
+RUN npx prisma migrate reset --force
 
-RUN npx prisma migrate deploy
+# RUN npx prisma migrate deploy
 
-RUN node prisma/seed.js
+# RUN node prisma/seed.js
 
 
 # Expose the port
