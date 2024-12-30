@@ -18,12 +18,21 @@ model Question {
   id Int @id @default(autoincrement())
   text String
   summary String
-  date_used DateTime
+  date_used DateTime?
   tags       Tag[]     @relation("QuestionTags") // Relation to tags
+  questionOfTheDayLogs QuestionOfTheDay[]   // A question can have many QOTD records
 }
 
 model Tag {
   id        Int         @id @default(autoincrement())
   name      String       @unique
   questions Question[]   @relation("QuestionTags") // Relation to questions
+}
+
+
+model QuestionOfTheDay {
+  id          Int      @id @default(autoincrement())
+  question    Question  @relation(fields: [questionId], references: [id])
+  questionId  Int
+  date        DateTime @unique
 }
