@@ -15,6 +15,8 @@ COPY . .
 
 RUN npx prisma generate
 
+RUN npx prisma migrate deploy
+
 # Expose the port
 EXPOSE 5003
 
