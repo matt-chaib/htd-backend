@@ -89,16 +89,15 @@ export async function getQuestionOfTheDay() {
       console.log(post)
       console.log(post.url)
       console.log(post.name)
-      console.log(Object.keys(post))
-      console.log(Object.values(post))
+      console.log(JSON.stringify(post))
 
       await prisma.question.update({
         where: { id: selectedQuestion.id },
         data: {
-          link: post.url, // Store the Reddit post URL
+          link: post.name, // Store the Reddit post URL
         },
       });
-      console.log(`Posted successfully! View it here: ${post.url}`);
+      console.log(`Posted successfully! View it here: ${JSON.stringify(post)}`);
     } catch (error) {
       console.error('Failed to post question of the day:', error);
     }
