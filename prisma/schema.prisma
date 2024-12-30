@@ -19,4 +19,11 @@ model Question {
   text String
   summary String
   date_used DateTime
+  tags       Tag[]     @relation("QuestionTags") // Relation to tags
+}
+
+model Tag {
+  id        Int         @id @default(autoincrement())
+  name      String       @unique
+  questions Question[]   @relation("QuestionTags") // Relation to questions
 }

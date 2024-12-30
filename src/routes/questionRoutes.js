@@ -6,7 +6,9 @@ const router = express.Router();
 
 router.get('/', async (req, res) => { 
     const questions = await prisma.question.findMany({
-
+        include: {
+            tags: true,
+          },
     })
 
     res.json(questions)
