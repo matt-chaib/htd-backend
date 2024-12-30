@@ -13,6 +13,8 @@ RUN npm install
 # Copy rest of the application
 COPY . .
 
+RUN npx prisma generate
+
 # Expose the port
 EXPOSE 5003
 

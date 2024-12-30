@@ -5,6 +5,8 @@ async function main() {
     const ethics = await prisma.tag.create({ data: { name: "Ethics" } });
     const morality = await prisma.tag.create({ data: { name: "Morality" } });
     const justice = await prisma.tag.create({ data: { name: "Justice" } });
+    const metaphysics = await prisma.tag.create({ data: { name: "Metaphysics" } });
+    const existentialism = await prisma.tag.create({ data: { name: "Existentialism" } });
 
     const q1 = await prisma.question.create({
       data: {
@@ -12,7 +14,7 @@ async function main() {
         summary: 'This question is about the meaning of life.',
         date_used: new Date(),
         tags: {
-          connect: [{ id: ethics.id }, { id: morality.id }, { id: justice.id }],
+          connect: [{ id: metaphysics.id }, { id: ethics.id }, { id: existentialism.id }],
         },
       },
       include: {
