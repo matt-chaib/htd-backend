@@ -88,12 +88,9 @@ export async function getQuestionOfTheDay() {
       });
       console.log(post)
       console.log(post.url)
-      console.log(post.then(onfulfilled => {
-        console.log(onfulfilled)
-      },
-    onRejected => {
-      console.log(onRejected)
-    }))
+      console.log(post.name)
+      console.log(Object.keys(post))
+      console.log(Object.values(post))
 
       await prisma.question.update({
         where: { id: selectedQuestion.id },
