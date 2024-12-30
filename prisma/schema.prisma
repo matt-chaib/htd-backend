@@ -21,6 +21,7 @@ model Question {
   date_used DateTime?
   tags       Tag[]     @relation("QuestionTags") // Relation to tags
   questionOfTheDayLogs QuestionOfTheDay[]   // A question can have many QOTD records
+  link             String?             // This will store the Reddit post URL
 }
 
 model Tag {

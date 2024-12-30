@@ -86,6 +86,13 @@ export async function getQuestionOfTheDay() {
         title: selectedQuestion.text,
         text: `Here's a link back to the question: https://www.hashtagdeep.com/${selectedQuestion.id}`
       });
+
+      await prisma.question.update({
+        where: { id: selectedQuestion.id },
+        data: {
+          link: post.url, // Store the Reddit post URL
+        },
+      });
       console.log(`Posted successfully! View it here: ${post.url}`);
     } catch (error) {
       console.error('Failed to post question of the day:', error);
