@@ -86,6 +86,14 @@ export async function getQuestionOfTheDay() {
         title: selectedQuestion.text,
         text: `Here's a link back to the question: https://www.hashtagdeep.com/${selectedQuestion.id}`
       });
+      console.log(post)
+      console.log(post.url)
+      console.log(post.then(onfulfilled => {
+        console.log(onfulfilled)
+      },
+    onRejected => {
+      console.log(onRejected)
+    }))
 
       await prisma.question.update({
         where: { id: selectedQuestion.id },
