@@ -15,13 +15,20 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 
-app.use(
-    cors({
-      origin: "http://localhost:3000",
-      methods: ["GET", "POST", "PUT", "DELETE"],
-    })
-  );
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://hashtagdeep.com',
+];
 
+app.use(cors({
+  origin: function (origin, callback) {
+    if (allowedOrigins.includes(origin) || !origin) { // Allows no-origin requests (e.g., from Postman or CURL)
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
 app.use(express.json())
 app.use(express.static(path.join(__dirname, "../public")))
 
