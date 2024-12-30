@@ -44,5 +44,6 @@ app.get('/', (req, res) => {
 app.use('/auth', authRoutes)
 app.use('/questions', todoRoutes)
 
+
 console.log("testing")
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`))

@@ -1,16 +1,35 @@
 import { PrismaClient } from '@prisma/client';
+import snoowrap from 'snoowrap'
 
 const prisma = new PrismaClient();
+
+const reddit = new snoowrap({
+  userAgent: 'QOTD Bot by /u/Free_Cash8050', // A description of your bot
+  clientId: 'pRo9hPnXAcuTWnaYYXjVhA',
+  clientSecret: `${process.env.REDDIT_SECRET}`,
+  username: 'Free_Cash8050',
+  password:  `${process.env.REDDIT_ACC_PASS}`
+});
+
 
 export async function getQuestionOfTheDay() {
   const today = new Date();
   today.setHours(0, 0, 0, 0); // Ensure the date is at midnight for comparison
 
+  console.log("getting question of the day")
+  const subredditName = 'hashtagdeep'; // Replace with your subreddit
+
   try {
     // Step 1: Check if a question is already assigned for today
     const existingQotd = await prisma.questionOfTheDay.findUnique({
       where: { date: today },
-      include: { question: true }, // Fetch the associated question
+      include: { 
+        question: {
+          include: {
+            tags: true, // Include the tags of the associated question
+          }
+        }
+      }, 
     });
 
     if (existingQotd) {
@@ -60,6 +79,17 @@ export async function getQuestionOfTheDay() {
         date: today,
       },
     });
+
+    try {
+      console.log("posting to reddit yippee")
+      const post = await reddit.getSubreddit(subredditName).submitSelfpost({
+        title: selectedQuestion.text,
+        text: `For question https://www.hashtagdeep.com/${selectedQuestion.id}`
+      });
+      console.log(`Posted successfully! View it here: ${post.url}`);
+    } catch (error) {
+      console.error('Failed to post question of the day:', error);
+    }
 
     return selectedQuestion; // Return the selected question
   } catch (error) {
