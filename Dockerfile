@@ -20,6 +20,9 @@ RUN npx prisma generate
 
 RUN npx prisma migrate deploy
 
+RUN node prisma/seed.js
+
+
 # Expose the port
 EXPOSE 5003
 
