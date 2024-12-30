@@ -84,7 +84,7 @@ export async function getQuestionOfTheDay() {
       console.log("posting to reddit yippee")
       const post = await reddit.getSubreddit(subredditName).submitSelfpost({
         title: selectedQuestion.text,
-        text: `Here's a link back to the question: https://www.hashtagdeep.com/${selectedQuestion.id}`
+        text: `Here's a link back to the question: https://www.hashtagdeep.com/questions/${selectedQuestion.id}`
       });
       console.log(post)
       console.log(post.url)
