@@ -16,7 +16,7 @@ datasource db {
 
 model Question {
   id Int @id @default(autoincrement())
-  text String
+  text String  @unique
   summary String
   date_used DateTime?
   tags       Tag[]     @relation("QuestionTags") // Relation to tags
