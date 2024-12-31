@@ -5,24 +5,39 @@ import { getQuestionOfTheDay } from '../service/questionService.js';
 const router = express.Router();
 
 router.get('/', async (req, res) => { 
+  const { limit } = req.query; // Extract the `limit` query parameter
+  
+  // Validate and parse the limit
+  const parsedLimit = limit ? parseInt(limit, 10) : undefined;
+  if (limit && isNaN(parsedLimit)) {
+    return res.status(400).json({ error: 'Invalid limit parameter' });
+  }
+
+  try {
     const questions = await prisma.question.findMany({
       where: {
         date_used: { not: null }, // Only include questions where date_used is not null
       },
-        include: {
-          tags: true, // Include the tags of each question
-        },
-        orderBy: [
-          {
-            date_used: {
-              sort: 'asc', // Sort valid dates in ascending order, `null` will appear last
-            },
+      include: {
+        tags: true, // Include the tags of each question
+      },
+      orderBy: [
+        {
+          date_used: {
+            sort: 'asc', // Sort valid dates in ascending order, `null` will appear last
           },
-        ],
-      });
+        },
+      ],
+      take: parsedLimit, // Apply the limit
+    });
 
-    res.json(questions)
-})
+    res.json(questions);
+  } catch (error) {
+    console.error('Error fetching questions:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 
 // Get a specific question by ID
 router.get('/:id', async (req, res) => {

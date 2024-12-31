@@ -13,6 +13,7 @@ RUN npm install
 # Copy rest of the application
 COPY . .
 
+# Set up environment variables
 ARG DATABASE_URL
 ENV DATABASE_URL=$DATABASE_URL 
 
@@ -22,17 +23,16 @@ ENV REDDIT_SECRET=$REDDIT_SECRET
 ARG REDDIT_ACC_PASS
 ENV REDDIT_ACC_PASS=$REDDIT_ACC_PASS 
 
+# Generate Prisma client
 RUN npx prisma generate
 
-RUN npx prisma migrate reset --force
+# RUN npx prisma migrate reset --force
 
-# RUN npx prisma migrate deploy
-
-# RUN node prisma/seed.js
-
+# Apply database migrations (incremental)
+RUN npx prisma migrate deploy
 
 # Expose the port
 EXPOSE 5003
 
-# Prod command to run application
-CMD ["node", "./src/server.js"]
+# Command to run the seed script and start the server
+CMD ["sh", "-c", "node prisma/seed.js && node ./src/server.js"]
