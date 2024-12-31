@@ -80,26 +80,28 @@ export async function getQuestionOfTheDay() {
       },
     });
 
-    try {
-      console.log("posting to reddit yippee")
-      const post = await reddit.getSubreddit(subredditName).submitSelfpost({
-        title: selectedQuestion.text,
-        text: `Here's a link back to the question: https://www.hashtagdeep.com/questions/${selectedQuestion.id}`
-      });
-      console.log(post)
-      console.log(post.url)
-      console.log(post.name)
-      console.log(JSON.stringify(post))
-
-      await prisma.question.update({
-        where: { id: selectedQuestion.id },
-        data: {
-          link: post.name, // Store the Reddit post URL
-        },
-      });
-      console.log(`Posted successfully! View it here: ${JSON.stringify(post)}`);
-    } catch (error) {
-      console.error('Failed to post question of the day:', error);
+    if (!selectedQuestion.link) {
+      try {
+        console.log("posting to reddit yippee")
+        const post = await reddit.getSubreddit(subredditName).submitSelfpost({
+          title: selectedQuestion.text,
+          text: `Here's a link back to the question: https://www.hashtagdeep.com/questions/${selectedQuestion.id}`
+        });
+        console.log(post)
+        console.log(post.url)
+        console.log(post.name)
+        console.log(JSON.stringify(post))
+  
+        await prisma.question.update({
+          where: { id: selectedQuestion.id },
+          data: {
+            link: post.name, // Store the Reddit post URL
+          },
+        });
+        console.log(`Posted successfully! View it here: ${JSON.stringify(post)}`);
+      } catch (error) {
+        console.error('Failed to post question of the day:', error);
+      }
     }
 
     return selectedQuestion; // Return the selected question
