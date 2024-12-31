@@ -18,6 +18,7 @@ const __dirname = dirname(__filename)
 const allowedOrigins = [
   'http://localhost:3000',
   'https://hashtagdeep.com',
+  'https://www.hashtagdeep.com',
 ];
 
 console.log(PORT)
