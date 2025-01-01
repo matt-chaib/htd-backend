@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
       orderBy: [
         {
           date_used: {
-            sort: 'asc', // Sort valid dates in ascending order, `null` will appear last
+            sort: 'desc', // Sort valid dates in ascending order, `null` will appear last
           },
         },
       ],
