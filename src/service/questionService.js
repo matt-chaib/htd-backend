@@ -39,16 +39,15 @@ export async function getQuestionOfTheDay() {
     // Step 2: Fetch a random unused question
     const unusedQuestions = await prisma.question.findMany({
         where: {
-          NOT: {
-            questionOfTheDayLogs: {
-              some: {}, // Exclude questions already used in QuestionOfTheDay
-            },
-          },
+          date_used: null, // Ensure the question has not been used
+          link: null
         },
       });
       
 
     let selectedQuestion;
+
+    console.log("UNUSED QUESTIONS", unusedQuestions)
 
     if (unusedQuestions.length > 0) {
       // Randomly select an unused question
@@ -61,8 +60,11 @@ export async function getQuestionOfTheDay() {
             tags: true,
           },
     });
+    console.log("ALL QUESTIONS", allQuestions)
       const randomIndex = Math.floor(Math.random() * allQuestions.length);
+      console.log("RANDOM INDEX", randomIndex)
       selectedQuestion = allQuestions[randomIndex];
+      console.log("SELECTED QUESTION", selectedQuestion)
     }
 
     await prisma.question.update({
