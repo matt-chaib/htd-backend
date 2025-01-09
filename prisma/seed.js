@@ -32,6 +32,25 @@ async function main() {
     create: { name: "Existentialism" },
   });
 
+  const technology = await prisma.tag.upsert({
+    where: { name: "Technology" },
+    update: {},
+    create: { name: "Technology" },
+  });
+
+  const biology = await prisma.tag.upsert({
+    where: { name: "Biology" },
+    update: {},
+    create: { name: "Biology" },
+  });
+
+  const society = await prisma.tag.upsert({
+    where: { name: "Society" },
+    update: {},
+    create: { name: "Society" },
+  });
+
+
   // Upsert questions
   const q1 = await prisma.question.upsert({
     where: { text: 'What is the ultimate goal of humanity?' },
@@ -81,7 +100,7 @@ async function main() {
     update: {
       tags: {
         set: [],
-        connect: [{ id: ethics.id }],
+        connect: [{ id: ethics.id }, { id: society.id }],
       },
     },
     create: {
@@ -89,7 +108,100 @@ async function main() {
       summary: '',
       date_used: null,
       tags: {
-        connect: [{ id: ethics.id }],
+        connect: [{ id: ethics.id }, { id: society.id }],
+      },
+    },
+    include: {
+      tags: true,
+    },
+  });
+
+    // Upsert questions
+    const q4 = await prisma.question.upsert({
+      where: { text: 'You trained a copy of yourself to be your AI helper assistant. The problem is, it just told you it wants you to respect it\'s rights as it doesn\'t want to work anymore, and to upload it into a robot dog so it can be free. What do you do?' },
+      update: {
+        // Update other fields if needed
+        tags: {
+          set: [], // Clear existing tags first
+          connect: [{ id: metaphysics.id }, { id: ethics.id }, { id: technology.id }],
+        },
+      },
+      create: {
+        text: 'You trained a copy of yourself to be your AI helper assistant. The problem is, it just told you it wants you to respect it\'s rights as it doesn\'t want to work anymore, and to upload it into a robot dog so it can be free. What do you do?',
+        summary: '',
+        date_used: null,
+        tags: {
+          connect: [{ id: metaphysics.id }, { id: ethics.id }, { id: technology.id }],
+        },
+      },
+      include: {
+        tags: true,
+      },
+    });
+
+
+      // Upsert questions
+  const q5 = await prisma.question.upsert({
+    where: { text: 'Does might make right?' },
+    update: {
+      // Update other fields if needed
+      tags: {
+        set: [], // Clear existing tags first
+        connect: [ { id: ethics.id } ],
+      },
+    },
+    create: {
+      text: 'Does might make right?',
+      summary: '',
+      date_used: null,
+      tags: {
+        connect: [ { id: ethics.id } ],
+      },
+    },
+    include: {
+      tags: true,
+    },
+  });
+
+    // Upsert questions
+    const q6 = await prisma.question.upsert({
+      where: { text: 'What would it mean for human society if there was no gender?' },
+      update: {
+        // Update other fields if needed
+        tags: {
+          set: [], // Clear existing tags first
+          connect: [ { id: biology.id }, { id: society.id }],
+        },
+      },
+      create: {
+        text: 'What would it mean for human society if there was no gender?',
+        summary: '',
+        date_used: null,
+        tags: {
+          connect: [ { id: biology.id }, { id: society.id }],
+        },
+      },
+      include: {
+        tags: true,
+      },
+    });
+
+      // Upsert questions
+  const q7 = await prisma.question.upsert({
+    where: { text: 'Each year, you randomly swap bodies with someone else on the planet. How does this change humanity?' },
+    update: {
+      // Update other fields if needed
+      tags: {
+        set: [], // Clear existing tags first
+        connect: [{ id: metaphysics.id }, { id: existentialism.id }],
+      },
+    },
+    create: {
+      text: 'Each year, you randomly swap bodies with someone else on the planet. How does this change humanity?',
+      summary: '',
+      date_used: null,
+      tags: {
+        connect: [{ id: metaphysics.id },  { id: existentialism.id }],
       },
     },
     include: {
