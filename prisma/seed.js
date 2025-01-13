@@ -101,6 +101,8 @@ async function main() {
       });
     }
 
+    console.log(questionsData.length())
+
 
 }
 
