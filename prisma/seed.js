@@ -12,6 +12,8 @@ async function main() {
     fs.readFileSync(path.join(__dirname, '../questions.json'), 'utf8')
   );
 
+  console.log(questionsData)
+
 
   // Upsert tags
   const ethics = await prisma.tag.upsert({
