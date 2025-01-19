@@ -46,6 +46,130 @@
     {
         "text": "People can implant chip-AI (sold by Enlighten.me Corp) into their minds so it interfaces directly and instantaneously with their thoughts. Some parents have even started allowing their kids to get implants, giving them an advantage at school. But who's to know what the Corp will do once they have a monopoly on people's minds? Speaking of which, your kids are asking if they can have the implant to help them get into a better university. The evidence suggests they're right. What do you do?",
         "tags": ["society", "technology", "identity"]
+    },
+    {
+      "text": "Where do new ideas come from? ",
+      "tags": ["biology", "existentialism"]
+    },
+    {
+      "text": "Why do we dream?",
+      "tags": ["biology"]
+    },
+    {
+      "text": "You wake up to a world where human emotions can be bought, sold, or transferred like currency. How does this change society, and what becomes most valuable?",
+      "tags": ["ethics", "society", "technology"]
+    },
+    {
+      "text": "A scientist creates a pill that removes the ability to feel pain without affecting physical harm. Would you take it? How would this change moral responsibility and risk-taking?",
+      "tags": ["ethics", "biology"]
+    },
+    {
+      "text": "Imagine a future where dreams can be recorded and replayed as entertainment. Would this lead to greater understanding or new forms of exploitation?",
+      "tags": ["technology", "ethics"]
+    },
+    {
+      "text": "An advanced AI predicts every major event of the next 100 years with perfect accuracy. Knowing the future, do humans still have free will?",
+      "tags": ["metaphysics", "technology"]
+    },
+    {
+      "text": "In a society where memories can be selectively erased or modified, what remains of personal identity?",
+      "tags": ["metaphysics", "identity"]
+    },
+    {
+      "text": "Time travel is discovered, but only memories can be sent back. How does this reshape the concept of learning and wisdom?",
+      "tags": ["metaphysics", "technology"]
+    },
+    {
+      "text": "A new law requires people to publicly display their worst secret on their clothing. What happens to social trust and shame?",
+      "tags": ["ethics", "society"]
+    },
+    {
+      "text": "Humans develop the ability to share pain with others. Does this create more empathy or more cruelty?",
+      "tags": ["ethics", "existentialism"]
+    },
+    {
+      "text": "You are offered the chance to live forever, but you must choose a single unchanging age. What age do you choose, and why?",
+      "tags": ["ethics", "metaphysics"]
+    },
+    {
+      "text": "Every person is now born with a timer showing how much time they have left to live. How does this change ambition and fear?",
+      "tags": ["existentialism", "ethics"]
+    },
+    {
+      "text": "A mysterious island contains a mirror that shows your true inner self. Would you look into it, and what do you hope to see?",
+      "tags": ["identity", "metaphysics"]
+    },
+    {
+      "text": "Imagine a device that lets you relive a single day from history exactly as it happened. What day would you choose, and why?",
+      "tags": ["technology", "existentialism"]
+    },
+    {
+      "text": "A language is discovered that conveys emotions perfectly without words. Does this replace or enhance traditional communication?",
+      "tags": ["language", "metaphysics"]
+    },
+    {
+      "text": "In a future society, citizens vote daily on moral issues via an app. What becomes of personal ethics and responsibility?",
+      "tags": ["ethics", "society"]
+    },
+    {
+      "text": "An alien species arrives with the ability to teach humans universal truth. Would you want to know the truth, no matter the cost?",
+      "tags": ["metaphysics", "existentialism"]
+    },
+    {
+      "text": "A world government mandates that all major decisions be made by a superintelligent AI. How does this redefine freedom?",
+      "tags": ["technology", "society"]
+    },
+    {
+      "text": "A technology allows people to download the life experiences of others. What happens to the concept of originality?",
+      "tags": ["technology", "identity"]
+    },
+    {
+      "text": "In a world where no one can lie, people discover new ways to hide the truth. How do language and manipulation evolve?",
+      "tags": ["language", "ethics"]
+    },
+    {
+      "text": "Imagine a world where animals gain human-level intelligence overnight. How does this affect human-animal relationships?",
+      "tags": ["ethics", "biology"]
+    },
+    {
+      "text": "Scientists discover how to measure happiness precisely. Should governments use this metric to guide policy?",
+      "tags": ["ethics", "society"]
+    },
+    {
+      "text": "A drug allows people to remember every moment of their lives perfectly. Is this a blessing or a curse?",
+      "tags": ["biology", "identity"]
+    },
+    {
+      "text": "You meet a future version of yourself who regrets a major choice you have yet to make. Do you listen to their advice?",
+      "tags": ["metaphysics", "ethics"]
+    },
+    {
+      "text": "Every human now dreams the same shared dream each night. How does this change culture and collective identity?",
+      "tags": ["existentialism", "society"]
+    },
+    {
+      "text": "The invention of perfect telepathy makes privacy obsolete. What new forms of secrecy emerge?",
+      "tags": ["technology", "ethics"]
+    },
+    {
+      "text": "Imagine you can edit your personality like software. Which traits would you change, and why?",
+      "tags": ["identity", "technology"]
+    },
+    {
+      "text": "A discovery reveals that reality is a simulation. Does life gain or lose meaning?",
+      "tags": ["metaphysics", "existentialism"]
+    },
+    {
+      "text": "A machine generates perfect art based on human emotions. What happens to human creativity and inspiration?",
+      "tags": ["technology", "society"]
+    },
+    {
+      "text": "A lottery randomly selects one person each year to make a single law that everyone must follow. What kind of society emerges?",
+      "tags": ["ethics", "society"]
+    },
+    {
+      "text": "A person’s social status is now determined by how much kindness they show. How does this change human ambition?",
+      "tags": ["ethics", "society"]
     }
   ]
   
