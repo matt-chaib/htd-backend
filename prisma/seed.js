@@ -81,6 +81,7 @@ async function main() {
   };
 
   for (const question of questionsData) {
+    try {
       await prisma.question.upsert({
         where: { text: question.text },
         update: {
@@ -101,8 +102,10 @@ async function main() {
           tags: true,
         },
       });
+    } catch (error) {
+      console.error(`Question '${question.text}' failed with tags ${question.tags} and error: ${error}.`)
     }
-
+  }
 
 }
 
