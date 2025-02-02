@@ -79,4 +79,15 @@ export class ApiClient {
 
     return response;
   }
+
+  async updateQuestionRedditLink(selectedQuestionId: number, postName: string) {
+    let response = await this.prisma.question.update({
+      where: { id: selectedQuestionId },
+      data: {
+        link: postName, // Store the Reddit post URL
+      },
+    });
+
+    return response;
+  }
 }
