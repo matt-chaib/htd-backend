@@ -70,11 +70,11 @@ export class ApiClient {
     return response;
   }
 
-  async createRedditPost(selectedQuestionText: string, subredditName: string) {
+  async createRedditPost(selectedQuestionId: number, selectedQuestionText: string, subredditName: string) {
     // @ts-ignore
     let response: any = await this.reddit.getSubreddit(subredditName).submitSelfpost({
       title: selectedQuestionText,
-      text: `Here's a link back to the question: https://www.hashtagdeep.com/questions/${selectedQuestion.id}`,
+      text: `Here's a link back to the question: https://www.hashtagdeep.com/questions/${selectedQuestionId}`,
     }) 
 
     return response;
