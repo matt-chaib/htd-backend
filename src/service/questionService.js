@@ -30,7 +30,7 @@ export class QuestionService {
             const randomIndex = Math.floor(Math.random() * allQuestions.length);
             selectedQuestion = allQuestions[randomIndex];
         }
-        this.apiClient.updateQuestionToUsed(selectedQuestion.id, today);
+        await this.apiClient.updateQuestionToUsed(selectedQuestion.id, today);
         if (!selectedQuestion.link) {
             try {
                 const post = await this.apiClient.createRedditPost(selectedQuestion.id, selectedQuestion.text, "hashtagdeep");
