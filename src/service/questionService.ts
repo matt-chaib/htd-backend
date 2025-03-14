@@ -21,19 +21,13 @@ export class QuestionService {
       const randomIndex = Math.floor(Math.random() * unusedQuestions.length);
       selectedQuestion = unusedQuestions[randomIndex];
     } else {
-      // If all questions have been used, select a random question from all
-      const allQuestions = await this.apiClient.getAllQuestions();
-      if (!allQuestions) {
-        console.error(
-          "Error fetching question of the day: No questions found by Prisma"
-        );
-        throw new Error("Could not fetch question of the day");
-      }
-
-      // Select a random question from all questions.
-      const randomIndex = Math.floor(Math.random() * allQuestions.length);
-      selectedQuestion = allQuestions[randomIndex];
+      // If all questions have been used, get the earliest question
+      selectedQuestion = await this.apiClient.getEarliestUsed();
     }
+
+    if (!selectedQuestion) {
+      return null;
+  }
 
     this.apiClient.updateQuestionToUsed(selectedQuestion.id, today);
 
