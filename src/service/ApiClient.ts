@@ -48,6 +48,16 @@ export class ApiClient {
     return response;
   }
 
+  async getEarliestUsed() {
+    let response = await this.prisma.question.findFirst({
+      orderBy: {
+          date_used: 'asc'
+      }
+  });
+
+  return response;
+  }
+
   async updateQuestionToUsed(selectedQuestionId: number, today: Date) {
     let response = await this.prisma.question.update({
       where: { id: selectedQuestionId},
